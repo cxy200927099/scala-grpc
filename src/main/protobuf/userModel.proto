@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "scalapb/scalapb.proto";
+
+package novelRecommand;
+
+message UserRawData {
+    repeated string userData = 1;
+}
+
+message UserRawDataRequest {
+    // the key is userId, value is UserRawData object
+    map<string, UserRawData> usersAttr = 1;
+}
+
+message UserRawDataResponse {
+    uint32 code = 1;
+    string errMsg = 2;
+}
+
+service UpdateUserModel{
+    rpc UpdateUserModel(UserRawDataRequest) returns (UserRawDataResponse);
+}
+
+

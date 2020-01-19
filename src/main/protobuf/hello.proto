@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+//import "google/protobuf/wrappers.proto";
+import "scalapb/scalapb.proto";
+
+package com.cxy.demo;
+
+/*
+ * Returns a greeting for the given person optionally including a custom message.
+ */
+service HelloWorld {
+    rpc SayHello(ToBeGreeted) returns (Greeting) {}
+}
+
+message Person {
+    string name = 1;
+}
+
+message ToBeGreeted {
+    Person person = 1;
+//    google.protobuf.StringValue msg = 2;
+    string msg = 2;
+}
+
+message Greeting {
+    string message = 1;
+}
